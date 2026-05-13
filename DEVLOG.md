@@ -1,7 +1,7 @@
 # Development Log – The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** Eduardo Valdovinos
+**Student ID:** 127403871
 
 > Instructions: Write at least four dated entries. Required entry types are marked below.
 > Two to five sentences per entry is sufficient. Write entries as you go, not all in one
@@ -15,7 +15,14 @@
 > Required. Write this before writing any code. Describe your plan: what you will
 > implement first, what parts you expect to be difficult, and how you plan to test.
 
-_Your entry here._
+- First, I will implement Dijsktra's algorithm for finding shortest paths while heeding the warning from the readme part 1.
+
+- I plan to first fill out the read me part 1 to make sure I understand the problem and fill out the first part of the python file with my read me content.
+
+- I predict that the coding of the search will be difficult and making sure that pruning doesn't skip the optimal route.
+
+- I plan to use the built in tests after each section, from which I will then check for small cases.
+
 
 ---
 

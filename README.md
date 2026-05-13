@@ -17,14 +17,16 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+
+Dijkstra handles shortest paths from S, but it does not 
+determine the best order of relic chambers to visit.
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+
+We still have to figure out the order in which we have to collect the relics.
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
-
+Different collection orders yield different total fuel costs.
 ---
 
 ## Part 2: Precomputation Design
