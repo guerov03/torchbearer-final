@@ -34,7 +34,19 @@ def explain_problem():
 
     TODO
     """
-    return "TODO"
+    return ( 
+    "Why a single shortest-path run from S is not enough:\n\n "
+
+    "Dijkstra handles shortest paths from S, but it does not "
+    "determine the best order of relic chambers to visit.\n\n"
+
+    "What decision remains after all inter-location costs are known:\n\n "
+
+    "We still have to figure out the order in which we have to collect the relics.\n\n "
+
+    "Why this requires a search over orders (one sentence):\n\n "
+    "Different collection orders yield different total fuel costs.\n\n "
+)
 
 
 # =============================================================================
