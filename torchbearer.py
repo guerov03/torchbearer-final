@@ -68,7 +68,15 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    sources = []
+    important_nodes = [spawn] + relics + [exit_node] #combine important nodes
+
+    for node in important_nodes:
+        if node not in sources: #add if not listed alrready
+            sources.append(node)
+    
+    return sources
+
 
 
 def run_dijkstra(graph, source):
@@ -87,7 +95,32 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+    distances = {}
+    for node in graph:
+        distances[node] = float('inf') #set nodes to inf
+
+    distances[source] = 0
+
+    priority_queue = [] # nodes yet to explore
+    heapq.heappush(priority_queue, (0, source)) # explore source first 
+
+    while priority_queue:
+        current_cost, current_node = heapq.heappop(priority_queue) #remove smallest cost
+        
+        if current_cost > distances[current_node]:
+            continue
+        
+        for neighbor, edge_cost in graph[current_node]:  #look at edges from curr node
+            new_cost = current_cost + edge_cost # cost to neighbor from curr
+
+        if new_cost < distances[neighbor]:
+            distances[neighbor] = new_cost #save if path is cheaper
+
+            heapq.heappush(
+                priority_queue,
+                (new_cost, neighbor)
+            )
+    return distances
 
 
 def precompute_distances(graph, spawn, relics, exit_node):
@@ -107,7 +140,21 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    sources = select_sources(
+        spawn,
+        relics,
+        exit_node 
+    )
+
+    dist_table = {}
+
+    for source in sources:
+        dist_table[source] = run_dijkstra(
+            graph,
+            source 
+        )
+    return dist_table
+
 
 
 # =============================================================================

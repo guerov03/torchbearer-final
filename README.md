@@ -37,8 +37,10 @@ Different collection orders yield different total fuel costs.
 
 | Source Node Type | Why it is a source |
 |---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| _Spawn_ | _We need a start node to get shortest path from it to each relic chamber_ |
+| _Relic Chambers_ | _Need a way for the bearer to move in between chambers_ |
+| _Exit Node_ | _Need a way to to tell the total distance from start to finish_ |
+
 
 ### Part 2b: Distance Storage
 
@@ -46,20 +48,20 @@ Different collection orders yield different total fuel costs.
 
 | Property | Your answer |
 |---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Data structure name |dist_table|
+| What the keys represent |Outer keys: source nodes, Inner Keys: destination nodes. |
+| What the values represent |The cheapest fuel cost from source to destination node. |
+| Lookup time complexity |Average case of O(1) |
+| Why O(1) lookup is possible |Via hashing in python, dist_table[u][v] has an avg constant time look up |
 
 ### Part 2c: Precomputation Complexity
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Number of Dijkstra runs:** _k + 2, where k = |M|_
+- **Cost per run:** _O(m log n)_
+- **Total complexity:** _O((k + 2) * m log n))_
+- **Justification (one line):** _Dijstra's algorithm runs once at the start, at each relic, and at the exit._
 
 ---
 
