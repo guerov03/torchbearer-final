@@ -31,7 +31,14 @@
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
+_Implemented first actual code in part 2: _
+
+- Implemented the selecting of important source nodes and running Dijkstra from each
+
+- Made sure to match the readme portion that mentions dist_table[source][destination] should give the smallest fuel cost.
+
+- The provided tests failing were unexpected at first until I noticed that the route search functions aren't finished yet. It at least helped me make sure syntax and other things were working fine before proceeding.
+
 
 ---
 
