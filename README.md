@@ -117,17 +117,36 @@ Correct distances for shortest paths matters because we use those values to comp
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** 
+
+If we use the greedy method to choose the next relic, we risk causing a more
+expensive route because best local choice doesn't mean best general choice.
+
+- **Counter-example setup:** 
+
+From the spec example:
+- Entrance: S
+- Relics: B, C, D
+- Exit: T
+
+
+- **What greedy picks:** 
+
+- Greedy picks the nearest relic choice from S =, in this case B for minimum cost.
+
+- **What optimal picks:** 
+
+ Optimal route: S --> B --> D --> C --> T (Total fuel cost 4)
+
+- **Why greedy loses:**
+
+The best route is the one with the best relic collection order. The greedy choice only looks at the cheapest move.
 
 ### What the Algorithm Must Explore
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+- The algorithm must explore different collection orders, as each can yield a different total cost.
 
 ---
 

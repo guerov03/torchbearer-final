@@ -215,7 +215,42 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    return (
+        """
+## Part 4: Search Design
+
+### Why Greedy Fails
+
+- **The failure mode:** 
+
+If we use the greedy method to choose the next relic, we risk causing a more
+expensive route because best local choice doesn't mean best general choice.
+
+- **Counter-example setup:** 
+
+From the spec example:
+- Entrance: S
+- Relics: B, C, D
+- Exit: T
+
+
+- **What greedy picks:** 
+
+- Greedy picks the nearest relic choice from S =, in this case B for minimum cost.
+
+- **What optimal picks:** 
+
+ Optimal route: S --> B --> D --> C --> T (Total fuel cost 4)
+
+- **Why greedy loses:**
+
+The best route is the one with the best relic collection order. The greedy choice only looks at the cheapest move.
+
+### What the Algorithm Must Explore
+
+- The algorithm must explore different collection orders, as each can yield a different total cost.
+        """
+    )
 
 
 # =============================================================================
