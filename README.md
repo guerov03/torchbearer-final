@@ -76,29 +76,37 @@ Different collection orders yield different total fuel costs.
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  
+  - Already locked in with best possible distance from source.
+  - No need to revisit them with dijkstra.
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  
+  - Only contain the best estimates found so far, can still
+    be overwritten if better option is found.
 
 ### Part 3b: Why Each Phase Holds
 
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+  
+- The source initializes as 0, while every other node starts at infinity. 
+  This satisfies the requirement of no paths being explored yet.
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+  
+  - Any path found later would add to the cost, and it's impossible for it to become cheaper. This is because there are no negative edge weights.
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+  
+  - The invariant guarantees that when all reachable nodes have their final shortest distances, any node that is still inifnity is not reachable from the source.
 
 ### Part 3c: Why This Matters for the Route Planner
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
+Correct distances for shortest paths matters because we use those values to compare relic collection orders to choose the cheapest route.
 
 ---
 
