@@ -1,20 +1,12 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
+**Student Name:** __Eduardo Valdovinos_________________________
 **Student ID:** ___________________________
 **Course:** CS 460 – Algorithms | Spring 2026
-
-> This README is your project documentation. Write it the way a developer would document
-> their design decisions , bullet points, brief justifications, and concrete examples where
-> required. You are not writing an essay. You are explaining what you built and why you built
-> it that way. Delete all blockquotes like this one before submitting.
 
 ---
 
 ## Part 1: Problem Analysis
-
-> Document why this problem is not just a shortest-path problem. Three bullet points, one
-> per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
 
@@ -33,8 +25,6 @@ Different collection orders yield different total fuel costs.
 
 ### Part 2a: Source Selection
 
-> List the source node types as a bullet list. For each, one-line reason.
-
 | Source Node Type | Why it is a source |
 |---|---|
 | _Spawn_ | _We need a start node to get shortest path from it to each relic chamber_ |
@@ -43,8 +33,6 @@ Different collection orders yield different total fuel costs.
 
 
 ### Part 2b: Distance Storage
-
-> Fill in the table. No prose required.
 
 | Property | Your answer |
 |---|---|
@@ -56,8 +44,6 @@ Different collection orders yield different total fuel costs.
 
 ### Part 2c: Precomputation Complexity
 
-> State the total complexity and show the arithmetic. Two to three lines max.
-
 - **Number of Dijkstra runs:** _k + 2, where k = |M|_
 - **Cost per run:** _O(m log n)_
 - **Total complexity:** _O((k + 2) * m log n))_
@@ -67,13 +53,7 @@ Different collection orders yield different total fuel costs.
 
 ## Part 3: Algorithm Correctness
 
-> Document your understanding of why Dijkstra produces correct distances.
-> Bullet points and short sentences throughout. No paragraphs.
-
 ### Part 3a: What the Invariant Means
-
-> Two bullets: one for finalized nodes, one for non-finalized nodes.
-> Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
   
@@ -86,8 +66,6 @@ Different collection orders yield different total fuel costs.
     be overwritten if better option is found.
 
 ### Part 3b: Why Each Phase Holds
-
-> One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
   
@@ -104,8 +82,6 @@ Different collection orders yield different total fuel costs.
 
 ### Part 3c: Why This Matters for the Route Planner
 
-> One sentence connecting correct distances to correct routing decisions.
-
 Correct distances for shortest paths matters because we use those values to compare relic collection orders to choose the cheapest route.
 
 ---
@@ -113,9 +89,6 @@ Correct distances for shortest paths matters because we use those values to comp
 ## Part 4: Search Design
 
 ### Why Greedy Fails
-
-> State the failure mode. Then give a concrete counter-example using specific node names
-> or costs (you may use the illustration example from the spec). Three to five bullets.
 
 - **The failure mode:** 
 
@@ -144,8 +117,6 @@ The best route is the one with the best relic collection order. The greedy choic
 
 ### What the Algorithm Must Explore
 
-> One bullet. Must use the word "order."
-
 - The algorithm must explore different collection orders, as each can yield a different total cost.
 
 ---
@@ -154,33 +125,26 @@ The best route is the one with the best relic collection order. The greedy choic
 
 ### Part 5a: State Representation
 
-> Document the three components of your search state as a table.
-> Variable names here must match exactly what you use in torchbearer.py.
-
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Current location | current_loc | node | The room currently being searched |
+| Relics already collected | relics_visited_order | list[node] | Relics collected so far in order |
+| Fuel cost so far | cost_so_far | float | Total fuel used by the route still in progress |
 
 ### Part 5b: Data Structure for Visited Relics
 
-> Fill in the table.
-
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | The set relics_remaining |
+| Operation: check if relic already collected | Time complexity: Avg of O(1) |
+| Operation: mark a relic as collected | Time complexity: Avg of O(1) |
+| Operation: unmark a relic (backtrack) | Time complexity: Avg of O(1) |
+| Why this structure fits | A set is faster for tracking which relics haven't been vistied yet |
 
 ### Part 5c: Worst-Case Search Space
 
-> Two bullets.
-
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** _k!, k = |M|_
+- **Why:** _The algorithm may have to try every possible order of k relics._
 
 ---
 
@@ -188,30 +152,31 @@ The best route is the one with the best relic collection order. The greedy choic
 
 ### Part 6a: Best-So-Far Tracking
 
-> Three bullets.
-
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** _The best route found so far._
+- **When it is used:** _Used when checking if cost_so_far is too expensive before exploring._
+- **What it allows the algorithm to skip:** _We can skip the routes that are more expensive than the best current cost._
 
 ### Part 6b: Lower Bound Estimation
 
-> Three bullets.
+- **What information is available at the current state:** 
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+ - current_loc, relics_remainig, relics_visited_order, cost_so_far are all available info.
+
+- **What the lower bound accounts for:** 
+ - It accounts for the fuel already spent: cost_so_far.
+
+- **Why it never overestimates:** 
+ - All remaining costs are nonnegative. This means that it is impossible for the final
+   route to ne cheaper than cost_so_far.
 
 ### Part 6c: Pruning Correctness
 
-> One to two bullets. Explain why pruning is safe.
-
-- _Your answer here._
+Pruning is safe because:
+- All edge weights are nonnegative, so the route branch can't be the most optimal if
+ it already reached best[0].
 
 ---
 
 ## References
-
-> Bullet list. If none beyond lecture notes, write that.
 
 - _Your references here._

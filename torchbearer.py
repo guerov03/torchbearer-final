@@ -277,8 +277,19 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    relics_remaining = set(relics)
+    best = [float('inf'), []]
+    _explore(                   # start search
+        dist_table,
+        spawn,
+        relics_remaining,
+        [],
+        0,
+        exit_node,
+        best 
+    )
 
+    return best[0], best[1]     #return best route
 
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
              cost_so_far, exit_node, best):
@@ -309,7 +320,49 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
+    
+   # The following pruning condition is safe because any remaining edges will be nonnegative, which 
+    # means that continuing this route can only get more expensive.
+
+
+    if cost_so_far >= best[0]:
+        return
+    
+    if not relics_remaining:            #base case (all relics already collected)
+        exit_cost = dist_table[current_loc][exit_node]
+
+        if exit_cost == float('inf'): # if exit can;t be reached --> invalid route
+            return
+        
+        total_cost = cost_so_far + exit_cost
+
+        if total_cost < best[0]:  #save route if better
+            best[0] = total_cost
+            best[1] = relics_visited_order.copy()
+
+        return
+        
+    for next_relic in list(relics_remaining):
+        travel_cost = dist_table[current_loc][next_relic]
+
+        if travel_cost == float('inf'):
+            continue
+
+    relics_remaining.remove(next_relic)         #choose relic and add to curr order
+    relics_visited_order.append(next_relic)
+
+    _explore(       #explore route after choosing relic
+        dist_table,
+        next_relic,
+        relics_remaining,
+        relics_visited_order,
+        cost_so_far + travel_cost,
+        exit_node,
+        best
+    )
+
+    relics_visited_order.pop()  #undo so next branch can try different order
+    relics_remaining.add(next_relic)
 
 
 # =============================================================================
