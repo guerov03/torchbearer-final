@@ -56,7 +56,7 @@ Reflection:
 
 Although all tests passed, I would have liked to comment my code better and to add tests
 to find possible bugs in specific cases. My favorite part of this project was that I got to understand 
-how Dijkstra's algorithm can be used in combination with another algorithm to create things. I enjoyed the assignment, as it was in a language that I am not used to, and it pushed me out of my comfort zone. 
+how Dijkstra's algorithm can be used with backtracking to solve a larger problem. I enjoyed the assignment, as it was in a language that I am not used to, and it pushed me out of my comfort zone. 
 I appreciate the learning experience.
 
 ---
