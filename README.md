@@ -179,4 +179,4 @@ Pruning is safe because:
 
 ## References
 
-- _Your references here._
+Lecture notes only
