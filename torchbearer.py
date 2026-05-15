@@ -113,13 +113,13 @@ def run_dijkstra(graph, source):
         for neighbor, edge_cost in graph[current_node]:  #look at edges from curr node
             new_cost = current_cost + edge_cost # cost to neighbor from curr
 
-        if new_cost < distances[neighbor]:
-            distances[neighbor] = new_cost #save if path is cheaper
+            if new_cost < distances[neighbor]:
+                distances[neighbor] = new_cost #save if path is cheaper
 
-            heapq.heappush(
-                priority_queue,
-                (new_cost, neighbor)
-            )
+                heapq.heappush(
+                    priority_queue,
+                    (new_cost, neighbor)
+                )
     return distances
 
 
@@ -348,21 +348,21 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
         if travel_cost == float('inf'):
             continue
 
-    relics_remaining.remove(next_relic)         #choose relic and add to curr order
-    relics_visited_order.append(next_relic)
+        relics_remaining.remove(next_relic)         #choose relic and add to curr order
+        relics_visited_order.append(next_relic)
 
-    _explore(       #explore route after choosing relic
-        dist_table,
-        next_relic,
-        relics_remaining,
-        relics_visited_order,
-        cost_so_far + travel_cost,
-        exit_node,
-        best
-    )
+        _explore(       #explore route after choosing relic
+            dist_table,
+            next_relic,
+            relics_remaining,
+            relics_visited_order,
+            cost_so_far + travel_cost,
+            exit_node,
+            best
+        )
 
-    relics_visited_order.pop()  #undo so next branch can try different order
-    relics_remaining.add(next_relic)
+        relics_visited_order.pop()  #undo so next branch can try different order
+        relics_remaining.add(next_relic)
 
 
 # =============================================================================
@@ -386,7 +386,19 @@ def solve(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    dist_table = precompute_distances(
+        graph,
+        spawn,
+        relics,
+        exit_node 
+    )
+
+    return find_optimal_route(
+        dist_table,
+        spawn,
+        relics,
+        exit_node 
+    )
 
 
 # =============================================================================
