@@ -3,17 +3,9 @@
 **Student Name:** Eduardo Valdovinos
 **Student ID:** 127403871
 
-> Instructions: Write at least four dated entries. Required entry types are marked below.
-> Two to five sentences per entry is sufficient. Write entries as you go, not all in one
-> sitting. Graders check that entries reflect genuine work across multiple sessions.
-> Delete all blockquotes before submitting.
-
 ---
 
-## Entry 1 – [Date]: Initial Plan
-
-> Required. Write this before writing any code. Describe your plan: what you will
-> implement first, what parts you expect to be difficult, and how you plan to test.
+## Entry 1 – [05/12/2026]: Initial Plan
 
 - First, I will implement Dijsktra's algorithm for finding shortest paths while heeding the warning from the readme part 1.
 
@@ -26,10 +18,7 @@
 
 ---
 
-## Entry 2 – [Date]: [Short description]
-
-> Required. At least one entry must describe a bug, wrong assumption, or design change
-> you encountered. Describe what went wrong and how you resolved it.
+## Entry 2 – [05/13/2026]: [Short description]
 
 _Implemented first actual code in part 2: _
 
@@ -55,27 +44,33 @@ quickly_
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – [05/14/2026]: Post-Implementation Reflection
 
-> Required. Written after your implementation is complete. Describe what you would
-> change or improve given more time.
+- After implementing solve(), all tests passed
 
-_Your entry here._
+Given more time:
+- Clean up comments sp that the code has better readibility.
+- Keep testing for bugs, maybe by adding more tests for spcific cases.
+
+Reflection:
+
+Although all tests passed, I would have liked to comment my code better and to add tests
+to find possible bugs in specific cases. My favorite part of this project was that I got to understand 
+how Dijkstra's algorithm can be used in combination with another algorithm to create things. I enjoyed the assignment, as it was in a language that I am not used to, and it pushed me out of my comfort zone. 
+I appreciate the learning experience.
 
 ---
 
-## Final Entry – [Date]: Time Estimate
-
-> Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
+## Final Entry – [05/14/2026]: Time Estimate
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+| Part 1: Problem Analysis |1.5 Hours reading the entire assignment and making sense of the work plan|
+| Part 2: Precomputation Design | 2.5 Hours getting used to the plan structure and implementing |
+| Part 3: Algorithm Correctness | 1 Hour |
+| Part 4: Search Design | 1.5 Hours|
+| Part 5: State and Search Space |1.5 Hours  |
+| Part 6: Pruning | 1.5 Hours |
+| Part 7: Implementation | 1 Hour |
+| README and DEVLOG writing |2.5 Hours |
+| **Total** | 13 Hours ( X _ X) |
