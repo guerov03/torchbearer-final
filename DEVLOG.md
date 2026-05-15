@@ -42,9 +42,16 @@ _Implemented first actual code in part 2: _
 
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – [05/14/2026]: [Short description]
 
-_Your entry here._
+Implemented solve(), fixed bugs, and tested
+
+_While testing the route search, I encountered some bugs, luckily I Was able to found the indentation error 
+quickly_
+
+- new_cost was outside of the neigbor loop in run_dikkstra()
+- choose, recursive search, and backtrack was not inside of the relic loop
+- All tests passed after correcting these
 
 ---
 
